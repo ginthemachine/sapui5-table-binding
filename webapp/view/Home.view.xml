@@ -1,0 +1,92 @@
+<mvc:View controllerName="com.test.tablebinding.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<!-- Table with row items binded -->
+						<Table items="{albums>/rows}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Table with row items binded" level="H2"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="12em">
+									<Text text="Id"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Title"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+									<Text text="Image"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{albums>id}"/>
+										<Text text="{albums>title}"/>
+										<Image src="{albums>thumbnailUrl}" width="6rem" decorative="true"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+						<!-- Table with column and items binded -->
+						<Table items="{albums>/rows}" columns="{albums>/columns}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Table with column and items binded" level="H2"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="{albums>label}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{albums>id}"/>
+										<Text text="{albums>title}"/>
+										<Image src="{albums>thumbnailUrl}" width="6rem" decorative="true"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+						<!-- Table with items using factory -->
+						<Table items="{ path: 'albums>/rows', factory: '.albumListFactory' }" columns="{albums>/columns}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Table with items using factory" level="H2"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="{albums>label}"/>
+								</Column>
+							</columns>
+							<!--<items>-->
+							<!--	<ColumnListItem>-->
+							<!--		<cells>-->
+							<!--			<ObjectIdentifier title="{albums>id}"/>-->
+							<!--			<Text text="{albums>title}"/>-->
+							<!--			<Image src="{albums>thumbnailUrl}" width="6rem" decorative="true"/>-->
+							<!--		</cells>-->
+							<!--	</ColumnListItem>-->
+							<!--</items>-->
+						</Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
